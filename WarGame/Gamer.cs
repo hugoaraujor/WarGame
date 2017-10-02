@@ -50,23 +50,23 @@ namespace WarGame
 		}
 		public  Card TakeTurn()
 		{
-			
 				var item = playerDeck.deck.Count - 1;
-				CurrentCard = this.playerDeck.deck[item];
-				Console.WriteLine("Trow a Card");
-				Console.WriteLine(CurrentCard.display);
-			    this.playerDeck.deck.Remove(CurrentCard);
-			    
+			    Console.WriteLine("tiene"+playerDeck.deck.Count.ToString());
 
-			return CurrentCard;
+			   CurrentCard = this.playerDeck.deck[item];
+			    this.playerDeck.deck.Remove(CurrentCard);
+			     Console.WriteLine("tiene" + playerDeck.deck.Count.ToString());
+			Console.WriteLine(this.player+" Trow a Card "+ CurrentCard.display);
+   			    return CurrentCard;
 		}
 		public Card TakeTurnWar(int n)
 		{
-			for (int i = n; i <= n; i++)
+			Console.WriteLine("Trow Cards down");
+			for (int i = 0; i <= n; i++)
 			{
 				var item = playerDeck.deck.Count - 1;
 				CurrentCard = this.playerDeck.deck[item];
-				Console.WriteLine("Trow a Card");
+				Console.WriteLine("Trow a Cards Down");
 				Console.WriteLine(CurrentCard.display);
 				this.playerDeck.deck.Remove(CurrentCard);
 			}
