@@ -9,7 +9,10 @@ namespace WarGame
 	public class Game
 	{
 		public Deck tableDeck = new Deck();
-		public int NumberofCardWhenWar = 1;
+		public Deck WarDeck = new Deck();
+		List<Gamer> Gamers = new List<Gamer>();
+		public int NumberofCardWhenWar = 0;
+
 		public void Divide(Deck Thedeck,List<Gamer> gamers)
 		{
 			int n = 0;
@@ -25,7 +28,7 @@ namespace WarGame
 		}
 		public bool AreSame(Card one, Card two)
 		{
-			if (one == two)
+			if (one.valueint == two.valueint)
 			{
 				Console.WriteLine("There is a War");
 				return true;
@@ -40,7 +43,7 @@ namespace WarGame
 			{
 				Console.WriteLine("There is a War");
 				one.TakeTurnWar(NumberofCardWhenWar);
-				one.TakeTurnWar(NumberofCardWhenWar);
+				two.TakeTurnWar(NumberofCardWhenWar);
 			}
 			else
 			{
@@ -57,17 +60,35 @@ namespace WarGame
 					GetTable(two);
 				}
 			}
+			Console.ReadKey();
 		}
 
 		public void GetTable(Gamer RoundWinner)
 		{
-			foreach (Card c in tableDeck.deck)
+			Console.WriteLine("You Won " + tableDeck.deck.Count());
+			while  (tableDeck.deck.Count>0)
 			{
+				int i = tableDeck.deck.Count - 1;
+				Card c = tableDeck.deck[i];
 				RoundWinner.playerDeck.AddCard(c);
+				tableDeck.deck.Remove(c);
+				i--;
 
 			}
-			tableDeck.warDeck = new List<Card>();
+			
+		}
+
+		public void GetWinner(List<Gamer>  Gamers)
+		{
+			Console.WriteLine("THE GAME IS OVER");
+			if (Gamers[0].playerDeck.deck.Count() > Gamers[1].playerDeck.deck.Count())
+				Console.WriteLine("Gamer 0 WON THIS GAME");
+				else
+				Console.WriteLine("Gamer 0 WON THIS GAME");
+			Console.WriteLine("Congratulation " + Gamers[0].player + "!");
+
+		}
 		}
 	}
-}
+
 

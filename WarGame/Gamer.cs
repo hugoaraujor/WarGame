@@ -17,7 +17,7 @@ namespace WarGame
 			GetName(gamers);
 			return gamers;
 		}
-		
+
 
 		public void Print()
 		{
@@ -32,13 +32,13 @@ namespace WarGame
 
 		public List<Gamer> GetName(List<Gamer> Gamers)
 		{
-            int playersCount = gamers.Count + 1;
+			int playersCount = gamers.Count + 1;
 			if (playersCount <= 2)
 			{
 				Console.WriteLine("Player {0} ", playersCount);
 				string nameValue = Console.ReadLine();
 				var newdeck = new Deck();
-				var aux = new Gamer() { player = nameValue, playerDeck=newdeck };
+				var aux = new Gamer() { player = nameValue, playerDeck = newdeck };
 				gamers.Add(aux);
 
 			}
@@ -48,25 +48,23 @@ namespace WarGame
 			};
 			return gamers;
 		}
-		public  Card TakeTurn()
+		public Card TakeTurn()
 		{
-				var item = playerDeck.deck.Count - 1;
-			    Console.WriteLine("tiene"+playerDeck.deck.Count.ToString());
 
-			   CurrentCard = this.playerDeck.deck[item];
-			    this.playerDeck.deck.Remove(CurrentCard);
-			     Console.WriteLine("tiene" + playerDeck.deck.Count.ToString());
-			Console.WriteLine(this.player+" Trow a Card "+ CurrentCard.display);
-   			    return CurrentCard;
+			var item = playerDeck.deck.Count - 1;
+			Console.WriteLine("tiene" + playerDeck.deck.Count.ToString());
+			CurrentCard = this.playerDeck.deck[item];
+			this.playerDeck.deck.Remove(CurrentCard);
+			Console.WriteLine("tiene" + playerDeck.deck.Count.ToString());
+			Console.WriteLine(this.player + " Trow a Card " + CurrentCard.display);
+			return CurrentCard;
 		}
 		public Card TakeTurnWar(int n)
 		{
 			Console.WriteLine("Trow Cards down");
 			for (int i = 0; i <= n; i++)
-			{
-				var item = playerDeck.deck.Count - 1;
-				CurrentCard = this.playerDeck.deck[item];
-				Console.WriteLine("Trow a Cards Down");
+			{	Console.WriteLine("Trow a Cards Down");
+				TakeTurn();
 				Console.WriteLine(CurrentCard.display);
 				this.playerDeck.deck.Remove(CurrentCard);
 			}

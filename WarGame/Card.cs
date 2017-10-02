@@ -35,9 +35,13 @@ namespace WarGame
 			if (cardvalue == "A")
 				valueint = 1;
 			else
-				valueint = letters.IndexOf(cardvalue) + 11;
-
-			return n;
+			{
+				if (letters.IndexOf(cardvalue) > -1)
+				{ valueint = letters.IndexOf(cardvalue) + 11; }
+				else
+				{ valueint = Convert.ToInt16(cardvalue); }
+			}
+			return valueint;
 		}
 	
 
