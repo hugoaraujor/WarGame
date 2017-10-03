@@ -9,50 +9,81 @@ namespace WarGame
 {
 	class Program
 	{
-		// War Game CArd Game
+		// War Game Card Game
+		/// <summary>
+		/// Programmer: Hugo Araujo - Venezuela
+		/// </summary>My Approach to a WAr Game Symulation between two players
+		/// <param name="args"></param>
 		//  Rules :http://www.bicyclecards.com/how-to-play/war/
+		
 		static void Main(string[] args)
 		{
+		
+			GoWar();
+			Console.ReadLine();
+
+		}
+
+		private static void GoWar()
+		{
 			Game Master = new Game();
+			Master.ShowInstructions();
+
+			//change 
+			/// LimittoNWars = N; //if you limit the game when got (N) wars or higher
+			/// NumberofCardWhenWar = N; //number of cards to drop
+			int LimittoNWars = 5;
+			int NumberofCardWhenWar = 1;
+			Master.SetParams(NumberofCardWhenWar, LimittoNWars);
+			
+
 			List<Gamer> Gamers = new List<Gamer>();
 			Gamer Gamer = new Gamer();
-			Console.OutputEncoding = System.Text.Encoding.UTF8;
 
+			//to allow symbols of card be displayer right way
+			Console.OutputEncoding = System.Text.Encoding.UTF8;
 			//Start the game with a deck of Cards Shuffled
 			Deck Maze = new Deck();
-
 			Maze.filldeck();
-			Console.WriteLine("This is the General Deck Before Shuffle:");
-			Maze.Print();
 			Maze.Shuffle();
-			Console.WriteLine("This is the General Deck Shuffled:");
-			Maze.Print();
-
-			//Have two Gamers to play
+			
+			//Maze.Print(); to print all Maze Cards Shuffled
+			
+			//Have two Gamers to play divide the Maze in  two parts
 			Gamer.NewGamer(Gamers);
 			Gamer.NewGamer(Gamers);
 			Master.Divide(Maze, Gamers);
+			//seeHands(Gamers);
 
-			//Have two Deck for each player
-			Console.WriteLine("Gamer 1 Has Cards:");
-			Gamers[0].PrintDeck(Gamers[0].playerDeck);
-			Console.WriteLine("Gamer 2 Has Cards:");
+			//Write Heading on screen
+			Console.WriteLine("   " + Gamers[0].player + "    " + Gamers[1].player);
 
-			Gamers[1].PrintDeck(Gamers[1].playerDeck);
-			while (Gamers[0].playerDeck.deck.Count>0  && Gamers[1].playerDeck.deck.Count > 0)
-			{	//Trow Card and add to a Player Deck
-				Master.tableDeck.AddCard(Gamers[0].TakeTurn());
-			    Master.tableDeck.AddCard(Gamers[1].TakeTurn());
-   			   //Review Cards
-				Master.CheckValue(Gamers[0], Gamers[1]);
-		    }
+			while ((Gamers[0].playerDeck.deck.Count > 0 
+				   && Gamers[1].playerDeck.deck.Count > 0 )
+			    	&&(Master.warCount<LimittoNWars))
+				{		
+					
+						//Trow Card and add to a Player Deck
+						Master.tableDeck.AddCard(Gamers[0].TakeTurn(true));
+						Master.tableDeck.AddCard(Gamers[1].TakeTurn(true));
+						//Review Cards
+				      Master.CheckValue(Gamers[0], Gamers[1]);
+				
+		     	}
 			Master.GetWinner(Gamers);
-			Gamers[0].PrintDeck(Gamers[0].playerDeck);
-			Gamers[1].PrintDeck(Gamers[1].playerDeck);
+			Console.WriteLine(" Wars:{0}", Master.warCount);
+		}
+
 		
-			Master.tableDeck.Print();
-			//Console.ReadLine();
+		//to see each player Hands of Cards just for Testing
+		static void seeHands(List<Gamer> gamers)
+		{
+				Console.WriteLine("Gamer 1 Has Cards:");
+				gamers[0].PrintDeck(gamers[0].playerDeck);
+				Console.WriteLine("Gamer 2 Has Cards:");
+				gamers[1].PrintDeck(gamers[1].playerDeck);
 
 		}
 	}
+	
 }

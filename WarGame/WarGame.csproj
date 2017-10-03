@@ -46,6 +46,7 @@
     <Compile Include="deck.cs" />
     <Compile Include="Game.cs" />
     <Compile Include="Gamer.cs" />
+    <Compile Include="IDeck.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
