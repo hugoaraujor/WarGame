@@ -39,7 +39,6 @@ namespace WarGame
 				var newdeck = new Deck();
 				var aux = new Gamer() { player = nameValue, playerDeck = newdeck };
 				gamers.Add(aux);
-
 			}
 			else
 			{
@@ -58,13 +57,11 @@ namespace WarGame
 				else
 					Console.Write("   [█]     ");
 				this.playerDeck.deck.Remove(CurrentCard);
-			
 			}
 			return CurrentCard;
 		}
 		public Card TakeTurnWar(int n,bool show)
 		{
-			
 			for (int i = 0; i < n; i++)
 			{
 				TakeTurn(show);
@@ -72,8 +69,5 @@ namespace WarGame
 			}
 			return CurrentCard;
 		}
-
 	}
-
-
 }

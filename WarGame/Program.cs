@@ -10,12 +10,9 @@ namespace WarGame
 	class Program
 	{
 		// War Game Card Game
-		/// <summary>
 		/// Programmer: Hugo Araujo - Venezuela
 		/// </summary>My Approach to a WAr Game Symulation between two players
-		/// <param name="args"></param>
 		//  Rules :http://www.bicyclecards.com/how-to-play/war/
-		
 		static void Main(string[] args)
 		{
 		
@@ -36,7 +33,6 @@ namespace WarGame
 			int NumberofCardWhenWar = 1;
 			Master.SetParams(NumberofCardWhenWar, LimittoNWars);
 			
-
 			List<Gamer> Gamers = new List<Gamer>();
 			Gamer Gamer = new Gamer();
 
@@ -62,7 +58,6 @@ namespace WarGame
 				   && Gamers[1].playerDeck.deck.Count > 0 )
 			    	&&(Master.warCount<LimittoNWars))
 				{		
-					
 						//Trow Card and add to a Player Deck
 						Master.tableDeck.AddCard(Gamers[0].TakeTurn(true));
 						Master.tableDeck.AddCard(Gamers[1].TakeTurn(true));
@@ -73,7 +68,6 @@ namespace WarGame
 			Master.GetWinner(Gamers);
 			Console.WriteLine(" Wars:{0}", Master.warCount);
 		}
-
 		
 		//to see each player Hands of Cards just for Testing
 		static void seeHands(List<Gamer> gamers)

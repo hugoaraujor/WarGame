@@ -10,10 +10,12 @@ namespace WarGame
 		static Random rand = new Random();
 		public List<Card> deck = new List<Card>();
 		public List<Card> warDeck = new List<Card>();
+
 		public Deck()
 		{
 
 		}
+
 		//Compose the maze with all the Cards in order for symbol
 		public List<Card> filldeck()
 		{
@@ -27,6 +29,7 @@ namespace WarGame
 			}
 			return deck;
 		}
+
 		//Shuffle the Cards using Linq query
 		public void Shuffle()
 		{
@@ -34,12 +37,14 @@ namespace WarGame
 			deck = query;
 
 		}
+
 		//Print The Maze
 		public void Print()
 		{
 			foreach (Card Card in deck)
-
+			{
 				Console.Write(Card.display + " ");
+			}
 			Console.WriteLine("");
 
 		}
@@ -48,8 +53,5 @@ namespace WarGame
 		{
 			deck.Add(c);
 		}
-
-
-
 	}
 }

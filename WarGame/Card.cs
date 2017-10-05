@@ -8,14 +8,11 @@ namespace WarGame
 
 		//https://en.wikipedia.org/wiki/Playing_cards_in_Unicode
 		public static string[] kind = { "♣", "♦", "♥", "♠" };
-
-
-		public int id { get; set; }
 		public string cardvalue { get; set; }
 		public int valueint { get; set; }
 		public string symbol { get; set; }
 		public string display { get; set; }
-		internal int index { get; set; }
+	
 		/// <summary>
 		/// Constructor
 		/// </summary>
@@ -23,21 +20,20 @@ namespace WarGame
 		/// <param name="Cardv">Card Value</param>
 		public Card(string symbolStr, string Cardv)
 		{
-			index++; ;
-			this.id = index;
+	
 			this.cardvalue = Cardv;
 			this.symbol = symbolStr;
 			this.display = this.cardvalue + " " + this.symbol;
 			valueint = GetValue(Cardv);
 		}
-	   //get numeric value from Cards Function
+	
+		//get numeric value from Cards Function
 		public int GetValue(string cardvalue)
 		{
-			
 			var letters = "JQK";
 
 			if (cardvalue == "A")
-				valueint = 12;
+				valueint = 13;
 			else
 			{
 				if (letters.IndexOf(cardvalue) > -1)
@@ -47,10 +43,5 @@ namespace WarGame
 			}
 			return valueint;
 		}
-	
-
-
 	}
-
-
 }
